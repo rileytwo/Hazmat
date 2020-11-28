@@ -9,12 +9,14 @@ let package = Package(
         .executable(name: "hazmat", targets: ["Hazmat"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.0.1")
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0")
     ],
     targets: [
         .target(
-            name: "Hazmat",
-            dependencies: []),
+            name: "Hazmat", dependencies: [
+                .product(name: "ArgumentParser", package: "swift-argument-parser")
+            ]
+        ),
         .testTarget(
             name: "HazmatTests",
             dependencies: ["Hazmat"]),
